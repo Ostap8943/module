@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-heading {
+            color: #333;
+            text-align: center;
+        }
+
+        .main-container {
+            margin: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+        
+        .site-link {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .main-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th, 
+        .data-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .separator {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        /* Додано селектор по id */
+        #name {
+            border: 1px solid #ccc;
+        }
+
+        /* Груповий селектор */
+        .data-table th, 
+        .data-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="main-heading">Мій сайт</h1>
+    <div class="main-container">
+        <a href="https://www.squarespace.com/templates" class="site-link">Гіперпосилання на сторінку сайту</a>
+        <div class="nested-block">
+            Вкладений блок
+            <div class="inner-block">Ще один вкладений блок</div>
+        </div>
+        <img src="image/example1.png" alt="image" class="main-image">
+        <h2 class="section-title">Текст з заголовком</h2>
+        <p><strong>Текст відформатований тегами для форматування тексту</strong>.</p>
+        <p>Спеціальні символи: &amp;, &lt;, &gt;</p>
+        <table border="1" class="data-table">
+            <tr>
+                <td>Таблиця</td>
+                <td>Ще один рядок</td>
+            </tr>
+            <tr>
+                <td>Ще один рядок</td>
+                <td>Ще один рядок</td>
+            </tr>
+        </table>
+        <ul class="unordered-list">
+            <li>Невпорядкований список 1</li>
+            <li>Невпорядкований список 2</li>
+            <li>Невпорядкований список 3</li>
+        </ul>
+        <ol class="ordered-list">
+            <li>Впорядкований список 1</li>
+            <li>Впорядкований список 2</li>
+            <li>Впорядкований список 3</li>
+        </ol>
+        <dl class="definition-list">
+            <dt>Термін 1</dt>
+            <dd>Визначення 1</dd>
+            <dt>Термін 2</dt>
+            <dd>Визначення 2</dd>
+        </dl>
+        <hr class="separator"> <!-- Горизонтальна лінія -->
+        <form class="form1" action="#">
+            <!-- Форма 1 -->
+            <label for="name">Ім'я:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <label for="message">Повідомлення:</label><br>
+            <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+            <input type="submit" value="Відправити">
+        </form>
+        <br> 
+        <form class="form2" action="#">
+            <!-- Форма 2 -->
+            <label for="username">Ім'я користувача:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="password">Пароль:</label><br>
+            <input type="password" id="password" name="password"><br>
+            <input type="submit" value="Увійти">
+        </form>
+        <br> 
+        <form class="form3" action="#">
+            <!-- Форма 3 -->
+            <label for="age">Вік:</label><br>
+            <input type="number" id="age" name="age"><br>
+            <input type="submit" value="Надіслати">
+        </form>
+        <br> 
+        <form class="form4" action="#">
+            <!-- Форма 4 -->
+            <label for="gender">Стать:</label><br>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Чоловіча</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Жіноча</label><br>
+            <input type="submit" value="Надіслати">
+        </form>
+        <br> 
+        <form class="form5" action="#">
+            <!-- Форма 5 -->
+            <label for="country">Країна:</label><br>
+            <select id="country" name="country">
+                <option value="ukraine">Україна</option>
+                <option value="usa">Сполучені Штати</option>
+                <option value="uk">Великобританія</option>
+            </select><br>
+            <input type="submit" value="Надіслати">
+        </form>
+        <br> 
+        <form class="form6" action="#">
+            <!-- Форма 6 -->
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="car">
+            <label for="vehicle1"> Автомобіль</label><br>
+            <input type="checkbox" id="vehicle2" name="vehicle2" value="bike">
+            <label for="vehicle2"> Мотоцикл</label><br>
+            <input type="submit" value="Надіслати">
+        </form>
+        <br>
+        <form class="form7" action="#">
+            <!-- Форма 7 -->
+            <label for="date">Дата народження:</label><br>
+            <input type="date" id="date" name="date"><br>
+            <input type="submit" value="Надіслати">
+        </form>
+    </div>
+</body>
+</html>

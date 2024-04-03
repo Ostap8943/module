@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тест по WEB дизайну</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%; 
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            font-size: 2.5em; 
+            margin-bottom: 40px; 
+        }
+        .question {
+            margin-bottom: 1.5em; 
+            font-size: 1em; 
+        }
+        .answer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1em; 
+            font-size: 1.1em; 
+        }
+        .answer input {
+            margin-right: 0.5em;
+            margin-top: 0em;
+            transform: scale(1.3); 
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px 20px; 
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em; 
+            margin-top: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.1em; 
+            font-weight: bold;
+            text-align: center;
+            color: green;
+        }
+        .correct-answer {
+            color: green;
+            font-weight: bold;
+            font-size: 1.1em; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Тест по WEB дизайну</h1>
+        <div id="test"></div>
+        <button onclick="checkAnswers()">Перевірити відповіді</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const testData = {
+            testName: "Тест по WEB дизайну",
+            
+            questions: [
+                {
+                    question: "1. Вкажіть тег для блоку?",
+                    answers: [
+                        { answer: "a", isCorrect: false },
+                        { answer: "div", isCorrect: true },
+                        { answer: "img", isCorrect: false },
+                        { answer: "p", isCorrect: false }
+                    ]
+                },
+                {
+                    question: "2. Вкажіть тег для гіперпосилання?",
+                    answers: [
+                        { answer: "a", isCorrect: true },
+                        { answer: "div", isCorrect: false },
+                        { answer: "span", isCorrect: false },
+                        { answer: "p", isCorrect: false }
+                    ]
+                },
+                {
+                    question: "3. Який тег використовується для створення нумерованого списку?",
+                    answers: [
+                        { answer: "ul", isCorrect: false },
+                        { answer: "ol", isCorrect: true },
+                        { answer: "li", isCorrect: false },
+                        { answer: "dl", isCorrect: false }
+                    ]
+                },
+                {
+                    question: "4. Що означає абревіатура CSS?",
+                    answers: [
+                        { answer: "Computer Style Sheets", isCorrect: false },
+                        { answer: "Cascading Style Sheets", isCorrect: true },
+                        { answer: "Creative Style Sheets", isCorrect: false },
+                        { answer: "Colorful Style Sheets", isCorrect: false }
+                    ]
+                },
+                {
+                    question: "5. Яка функція використовується для вибору елементів в DOM за їх ідентифікатором?",
+                    answers: [
+                        { answer: "getElementByClassName()", isCorrect: false },
+                        { answer: "getElementByName()", isCorrect: false },
+                        { answer: "getElementById()", isCorrect: true },
+                        { answer: "querySelector()", isCorrect: false }
+                    ]
+                }
+            ]
+        };
+    
+        function createTest() {
+            const testDiv = document.getElementById('test');
+            testData.questions.forEach((question, questionIndex) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                const questionHeader = document.createElement('h2');
+                questionHeader.textContent = question.question;
+                questionDiv.appendChild(questionHeader);
+                question.answers.forEach((answer, answerIndex) => {
+                    const answerDiv = document.createElement('div');
+                    answerDiv.className = 'answer';
+                    const answerInput = document.createElement('input');
+                    answerInput.type = 'radio';
+                    answerInput.name = `question${questionIndex}`;
+                    answerInput.id = `question${questionIndex}answer${answerIndex}`;
+                    const answerLabel = document.createElement('label');
+                    answerLabel.htmlFor = answerInput.id;
+                    answerLabel.textContent = answer.answer;
+                    answerDiv.appendChild(answerInput);
+                    answerDiv.appendChild(answerLabel);
+                    questionDiv.appendChild(answerDiv);
+                });
+                testDiv.appendChild(questionDiv);
+            });
+        }
+    
+        let isChecked = false;
+    
+        function checkAnswers() {
+            if (isChecked) return; 
+            let correctAnswers = 0;
+            testData.questions.forEach((question, questionIndex) => {
+                question.answers.forEach((answer, answerIndex) => {
+                    const answerInput = document.getElementById(`question${questionIndex}answer${answerIndex}`);
+                    if (answerInput.checked && answer.isCorrect) {
+                        correctAnswers++;
+                    }
+                    if (answer.isCorrect) {
+                        const correctAnswerLabel = document.createElement('div');
+                        correctAnswerLabel.className = 'correct-answer';
+                        correctAnswerLabel.textContent = 'Правильна відповідь: ' + answer.answer;
+                        answerInput.parentNode.parentNode.appendChild(correctAnswerLabel);
+                    }
+                });
+            });
+            const totalQuestions = testData.questions.length;
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = `Ви правильно відповіли на ${correctAnswers} питань з ${totalQuestions}.`;
+            resultElement.style.color = (correctAnswers === totalQuestions) ? 'green' : 'red';
+            isChecked = true; 
+        }
+    
+        createTest();
+    </script>  
+</body>
+</html>
+
+

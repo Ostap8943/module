@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Ball</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="600" height="400"></canvas>
+    <div id="results">
+        <h2>Top 3 Results</h2>
+        <ol id="topResults"></ol>
+        <h2>Bottom 3 Results</h2>
+        <ol id="bottomResults"></ol>
+    </div>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let ballX = canvas.width / 2;
+        let ballY = canvas.height / 2;
+        let ballRadius = 10;
+        let dx = 2;
+        let dy = -2;
+
+        let obstacleX = 200;
+        let obstacleY = 150;
+        let obstacleWidth = 100;
+        let obstacleHeight = 50;
+
+        let score = 0;
+
+        let results = [];
+
+
+        canvas.addEventListener('click', function(event) {
+            let rect = canvas.getBoundingClientRect();
+            let mouseX = event.clientX - rect.left;
+            let mouseY = event.clientY - rect.top;
+            if (Math.sqrt((mouseX - ballX) ** 2 + (mouseY - ballY) ** 2) < ballRadius) {
+                score += 10; 
+                resetBall();
+            }
+        });
+
+
+        function resetBall() {
+            ballX = Math.random() * canvas.width;
+            ballY = Math.random() * canvas.height;
+            dx = (Math.random() - 0.5) * 4; 
+            dy = (Math.random() - 0.5) * 4; 
+        }
+
+
+        function drawObstacle() {
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(obstacleX, obstacleY, obstacleWidth, obstacleHeight);
+        }
+
+
+        function checkCollision() {
+            if (ballX + ballRadius > obstacleX &&
+                ballX - ballRadius < obstacleX + obstacleWidth &&
+                ballY + ballRadius > obstacleY &&
+                ballY - ballRadius < obstacleY + obstacleHeight) {
+                score -= 20; 
+                resetBall();
+            }
+        }
+
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+            ctx.beginPath();
+            ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+            ctx.fillStyle = 'red';
+            ctx.fill();
+            ctx.closePath();
+
+
+            drawObstacle();
+
+
+            checkCollision();
+
+            ballX += dx;
+            ballY += dy;
+
+
+            if (ballX + dx > canvas.width - ballRadius || ballX + dx < ballRadius) {
+                dx = -dx;
+            }
+            if (ballY + dy > canvas.height - ballRadius || ballY + dy < ballRadius) {
+                dy = -dy;
+            }
+
+
+            ctx.font = '16px Arial';
+            ctx.fillStyle = 'black';
+            ctx.fillText('Score: ' + score, 10, 20);
+
+            requestAnimationFrame(draw);
+        }
+
+        function saveResult() {
+            results.push(score);
+            results.sort((a, b) => b - a); 
+            updateResults();
+        }
+
+
+        function updateResults() {
+            let topResultsList = document.getElementById('topResults');
+            let bottomResultsList = document.getElementById('bottomResults');
+            topResultsList.innerHTML = '';
+            bottomResultsList.innerHTML = '';
+            for (let i = 0; i < Math.min(3, results.length); i++) {
+                let listItemTop = document.createElement('li');
+                listItemTop.textContent = results[i];
+                topResultsList.appendChild(listItemTop);
+            }
+            for (let i = results.length - 1; i >= Math.max(0, results.length - 3); i--) {
+                let listItemBottom = document.createElement('li');
+                listItemBottom.textContent = results[i];
+                bottomResultsList.appendChild(listItemBottom);
+            }
+        }
+
+        draw();
+        setInterval(saveResult, 10000); 
+    </script>
+</body>
+</html>
+
+
+
+

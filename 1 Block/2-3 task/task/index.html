@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BurgerHeaven</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <img src="image/burger.png" alt="Logo" class="logo">
+        <div class="headText">
+            <div class="menu-large">
+                <a href="#ABOUT">About</a> 
+                <a href="#MENU">Menu</a> 
+               <a href="#ORDER">Order Online</a> 
+            </p>
+            </div>
+            <div class="menu-small">
+                <div class="dropdown" id="dropdown">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="menu-icon" id="menu-icon"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" class=""></path></svg>
+                    <div class="dropdown-content">
+                        <a href="#ABOUT" onclick="closeDropdown()">About</a>
+                        <a href="#MENU" onclick="closeDropdown()">Menu</a>
+                        <a href="#ORDER" onclick="closeDropdown()">Order Online</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main"> 
+        <div id="MENU">
+            <div class="recdiv">
+                <img src="image/cheeseburger.jpg" alt="cheeseburger" class="recimage">
+                <p><br><br><br>CHEESEBURGER<br><br>
+                    A classic favorite, our cheeseburger is crafted with care using the finest ingredients. Sink your teeth into juicy beef, melted cheese, and fresh toppings all nestled between two soft buns.
+                </p>
+            </div>
+            <div class="recdiv">
+                <img src="image/fries.jpg" alt="fries" class="recimage">
+                <p><br><br><br>FRIES<br><br>
+                    Crispy, golden, and oh-so-delicious, our fries are the perfect sidekick to any burger. Made from hand-cut potatoes and seasoned to perfection, they're impossible to resist.
+                </p>
+            </div>
+            <div class="recdiv">
+                <img src="image/baconburger.jpg" alt="baconcheeseburger" class="recimage">
+                <p><br><br><br>BACON CHEESEBURGER<br><br>
+                    Elevate your burger experience with our bacon cheeseburger. Juicy beef, crispy bacon, melted cheese, and fresh toppings come together to create a mouthwatering masterpiece.
+                </p>
+            </div>
+            <div class="recdiv">
+                <img src="image/seafoodburger.jpg" alt="seafoodburger" class="recimage">
+                <p><br><br><br>SEAFOOD BURGER<br><br>
+                    Dive into flavor with our seafood burger. Made with the freshest catch, our seafood patty is bursting with taste. Topped with tangy sauces and crisp lettuce, it's a true ocean delight.
+                </p>
+            </div>
+            <div class="recdiv">
+                <img src="image/bbqburger.jpg" alt="bbqburger" class="recimage">
+                <p><br><br><br><br>BBQ BURGER<br><br>
+                    Indulge your taste buds with our BBQ burger. Tender beef, smoky barbecue sauce, and crispy onions combine to create a bold and savory experience that'll leave you craving more.
+                </p>
+            </div>
+            <div class="recdiv">
+                <img src="image/vegetarianburger.jpg" alt="vegetarianburger" class="recimage">
+                <p><br><br><br><br>VEGETARIAN BURGER<br><br>
+                    Embrace meat-free goodness with our vegetarian burger. Packed with flavorful veggies and topped with creamy sauces, it's a satisfying option for veggie lovers and burger enthusiasts alike.
+                </p>
+            </div>
+            <div id="ABOUT">
+                <div class="recdiv">
+                    <img src="image/about us.jpg" alt="borshch" class="recimage">
+                    <p><br><br><br>ABOUT US<br><br>
+                        We are family-owned and Texas-grown, committed to reinventing the all-American concept of the hamburger. Our pledge includes high-quality food, social contribution, and environmental responsibility. We believe in doing things right: sourcing the freshest and highest quality product, finding local bakeries that use only American-grown ingredients, and ensuring that our meats come from responsible sources.
+                        <br><br>We are thankful for all of your support.
+                    </p>
+                </div>
+            </div>
+            <div id="ORDER">
+                <div class="recdiv">
+                    <img src="image/order.png" alt="order" class="recimage">
+                    <p><br><br><br>ORDER ONLINE<br><br>
+                        Our doors are open, and we'd love to see you in our restaurants, but if you're after a great burger at home we're also open for takeaway, click & collect, and delivery.
+                        <br><br>Choose how to get your burger below.
+                        <br><br>
+                        <br><br>
+                        <br><br><button class="delivery-btn" onclick="redirectToDelivery()">DELIVERY</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p></p>
+    </footer>
+    <script>
+        function redirectToDelivery() {
+            window.location.href = 'https://www.google.com/';
+        }
+
+        function closeDropdown() {
+            var dropdownContent = document.querySelector('.dropdown-content');
+            dropdownContent.classList.remove('show');
+
+            var catImage = document.querySelector('.logo');
+            catImage.style.width = '70px';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var menuIcon = document.getElementById('menu-icon');
+            var dropdownContent = document.querySelector('.dropdown-content');
+            var catImage = document.querySelector('.logo');
+
+            menuIcon.addEventListener('click', function(event) {
+                event.stopPropagation();
+                dropdownContent.classList.toggle('show');
+                catImage.style.width = '350px';
+            });
+
+            document.addEventListener('click', function(event) {
+                var targetElement = event.target;
+                var isMenu = targetElement.closest('.dropdown-content');
+
+                if (!isMenu) {
+                    closeDropdown();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

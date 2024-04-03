@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Форма Опитування</title>
+</head>
+<body>
+
+<form id="surveyForm">
+  <label for="faculty">На якому факультеті ви навчаєтесь:</label>
+  <select id="faculty" name="faculty">
+    <option value="engineering">Факультет електроніки та комп’ютерних технологій</option>
+    <option value="science">Факультет журналістики</option>
+    <option value="arts">Історичний факультет</option>
+  </select><br>
+  <br>
+
+  <fieldset>
+    <legend>Виберіть потік на якому ви навчаєтесь:</legend>
+    <input type="radio" id="stream1" name="stream" value="Потік 1">
+    <label for="stream1">Потік 1</label><br>
+    <input type="radio" id="stream2" name="stream" value="Потік 2">
+    <label for="stream2">Потік 2</label><br>
+  </fieldset>
+  <br>
+
+  <label for="group">Вкажіть групу:</label>
+  <br>
+  <input type="checkbox" id="group1" name="group" value="ФЕІ-24(1)">
+  <label for="group">ФЕІ-24(1)</label><br>
+  <input type="checkbox" id="group2" name="group" value="ФЕІ-24(2)">
+  <label for="group">ФЕІ-24(2)</label><br>
+  <br>
+
+  <label for="interviewDate">Виберіть дату для співбесіди:</label>
+  <input type="date" id="interviewDate" name="interviewDate"><br>
+  <br>
+  <label for="interviewTime">Виберіть час:</label>
+  <input type="time" id="interviewTime" name="interviewTime"><br>
+  <br>
+  <label for="interviewWeek">Виберіть тиждень:</label>
+  <input type="week" id="interviewWeek" name="interviewWeek"><br>
+  <br>
+
+  <label for="averageScore">Вкажіть середній бал:</label>
+  <input type="number" id="averageScore" name="averageScore" min="1" max="5"><br>
+  <br>
+
+  <label for="favoriteColor">Який ваш улюблений колір?</label>
+  <input type="color" id="favoriteColor" name="favoriteColor"><br>
+  <br>
+  <label for="email">Вкажіть вашу електронну адресу:</label>
+  <input type="email" id="email" name="email"><br>
+  <br>
+  <label for="resume">Завантажте резюме:</label>
+  <input type="file" id="resume" name="resume"><br>
+  <br>
+  <label for="birthMonth">Вкажіть місяць вашого народження:</label>
+  <input type="month" id="birthMonth" name="birthMonth"><br>
+  <br>
+  <label for="programDiscovery">Як ви дізнались про нашу програму?</label> <br>
+  <textarea id="programDiscovery" name="programDiscovery"></textarea><br>
+
+  <input type="submit" value="Надіслати">
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>
